@@ -71,7 +71,6 @@ function queueUser(msg) {
     else {
         msg.channel.send("I queued you up, here's the current list.")
         // Add sender to queue
-        console.log("Adding", msg.author.username, "to queue");
         userQueue.push(msg.author);
     }
 
@@ -80,7 +79,6 @@ function queueUser(msg) {
 }
 
 async function spotsAvailable(msg, spotCount) {
-    console.log(userQueue)
     if (userQueue.length === 0) {
         return msg.channel.send("No users are queued!");
     }
