@@ -19,7 +19,7 @@ class BaseCommands {
             .addField('!q me #map', "Add yourself to an available queue with #MAP")
             .addField('!q xme', "Remove yourself from any queues you are enrolled in")
             .addField('!q clear', "Clear your queue!")
-            .addField('!q done', "Close your queue");
+            .addField('!q done|close', "Close your queue");
         msg.channel.send(embed);
     }
 

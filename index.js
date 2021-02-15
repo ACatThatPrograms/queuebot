@@ -29,6 +29,10 @@ bot.on('message', (msg) => {
         case '!q xme': return removeUser(msg);
         case '!q clear': return clear(msg);
         case '!q list': return listQueues(msg);
+
+        case `!q close`:
+        case '!q done': return closeQueue(msg);
+        
         default:
             if (args[0] === "!q") {
 
@@ -54,11 +58,6 @@ bot.on('message', (msg) => {
                 // !q map (code)
                 if (args[1] === "map" && args[2]) {
                     return updateMapName(msg, args[2])
-                }
-
-                // !q close 
-                if (args[1] === "close") {
-                    return closeQueue(msg)
                 }
 
             }
@@ -93,11 +92,12 @@ function fetchOwnerQueue(msg) {
 
 function closeQueue(msg) {
     let ownerQueue = fetchOwnerQueue(msg);
-    if (ownerQueue) {
-        return msg.reply("You already have a queue, you can close it with !q close");
+    if (!ownerQueue) {
+        return msg.reply("You don't have a queue to close!");
     }
     let queueIndex = queues.findIndex(queue => parseInt(queue.owner.id) === parseInt(msg.author.id));
     queues.splice(queueIndex, 1);
+    msg.reply("I went ahead and closed your queue.");
 }
 
 function newQueue(msg, mapName, roomCode) {
