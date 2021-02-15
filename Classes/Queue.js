@@ -52,8 +52,18 @@ class Queue {
     }
 
     updateMapName(msg, mapName) {
-        this.mapName = mapName.toUpperCase();
-        msg.reply("I updated your queue's map name to: " + this.mapName);
+        let mapCheck = mapName.toUpperCase();
+        if (
+            mapCheck === "POLUS" 
+        || mapCheck === "SKELD"
+        || mapCheck == "MIRA"
+        ) {
+            this.mapName = mapName.toUpperCase();
+            return msg.reply("I updated your queue's map name to: " + this.mapName);
+        }
+        else {
+            return msg.reply("That isn't a valid mapname! Use: polus, mira, or skeld!")
+        }
     }
 
     clear(msg) {
