@@ -1,0 +1,1 @@
+exports.createPingFromUserId = (name) => ('<@' + name + '>');
