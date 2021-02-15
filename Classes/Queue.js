@@ -47,7 +47,7 @@ class Queue {
         if (code.length !== 6) {
             return msg.reply("Make sure that's a valid room code! 6 digits!");
         }
-        this.roomCode = toUpperCase(code);
+        this.roomCode = code.toUpperCase();
         msg.reply("I updated your queue's room code to: " + this.roomCode);
     }
 
